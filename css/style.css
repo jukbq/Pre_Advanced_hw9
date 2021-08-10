@@ -30,6 +30,18 @@ section .input_arr .btn-success {
   width: 130px;
 }
 
+section .input_arr .edit_user {
+  display: none;
+}
+
+section .input_arr .hide_button {
+  display: none;
+}
+
+section .input_arr .showe_button {
+  display: block;
+}
+
 section .table {
   display: block;
   width: 600px;
