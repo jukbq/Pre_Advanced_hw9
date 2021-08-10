@@ -16,7 +16,29 @@ section {
         }
     }
     .table {
+        display: block;
         width: 600px;
         min-height: 400px;
+        tr {
+             :nth-child(1) {
+                width: 30px;
+            }
+             :nth-child(2) {
+                width: 100px;
+            }
+             :nth-child(3) {
+                width: 120px;
+            }
+             :nth-child(4) {
+                width: 150px;
+            }
+             :nth-child(5),
+             :nth-child(6) {
+                width: 100px;
+                .btn {
+                    width: 70px;
+                }
+            }
+        }
     }
 }

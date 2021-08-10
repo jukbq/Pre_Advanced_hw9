@@ -31,7 +31,34 @@ section .input_arr .btn-success {
 }
 
 section .table {
+  display: block;
   width: 600px;
   min-height: 400px;
+}
+
+section .table tr :nth-child(1) {
+  width: 30px;
+}
+
+section .table tr :nth-child(2) {
+  width: 100px;
+}
+
+section .table tr :nth-child(3) {
+  width: 120px;
+}
+
+section .table tr :nth-child(4) {
+  width: 150px;
+}
+
+section .table tr :nth-child(5),
+section .table tr :nth-child(6) {
+  width: 100px;
+}
+
+section .table tr :nth-child(5) .btn,
+section .table tr :nth-child(6) .btn {
+  width: 70px;
 }
 /*# sourceMappingURL=style.css.map */
