@@ -1,4 +1,2 @@
-
-gitignore
-gitignore
-gitignore
+node_modules
+.vscode
