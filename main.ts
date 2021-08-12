@@ -1,6 +1,12 @@
 
 let uaer_array: any[] = [];
 
+function clear_val() {
+    $('#login').val('');
+    $('#pass').val('');
+    $('#email1').val('');
+}
+
 /*------------------------------Заповнення таблиці-----------------------*/
 
 function render(): void {
@@ -20,10 +26,8 @@ function render(): void {
         table += '<button type="button" onclick="deleteUser(' + i + ')" class="btn btn-danger deleteUser" >Delete</button>'
         table += '</td>'
         table += '</tr>'
-
     });
     $('.tab_body').html(table);
-
 
 };
 
@@ -61,14 +65,32 @@ function add_user(): void {
     let pass = $('#pass').val();
     let email1 = $('#email1').val();
 
-    let reg = new User(`${login}`, `${pass}`, `${email1}`)
-    reg.push_array()
+    if (login !== '' && pass !== '' && email1 !== '') {
+        if (login !== '') {
+            $('#login').removeClass('valid');
+        }
+        if (pass !== '') {
+            $('#pass').removeClass('valid');
+        }
+        if (email1 !== '') {
+            $('#email1').removeClass('valid');
+        }
+        let reg = new User(`${login}`, `${pass}`, `${email1}`)
+        reg.push_array()
+        clear_val()
+        render()
+    } else {
+        if (login === '') {
+            $('#login').addClass('valid');
+        }
+        if (pass === '') {
+            $('#pass').addClass('valid');
+        }
+        if (email1 === '') {
+            $('#email1').addClass('valid');
+        }
 
-    $('#login').val('');
-    $('#pass').val('');
-    $('#email1').val('');
-
-    render()
+    }
 }
 
 
@@ -102,7 +124,7 @@ function edit(i: any): void {
 
 
 
-}; 
+};
 
 
 function saveEditUser(): void {
@@ -114,16 +136,11 @@ function saveEditUser(): void {
     uaer_array.splice(i, 1)
     let reg = new User(`${login}`, `${pass}`, `${email1}`)
     reg.push_array_index(i)
-
-    $('#login').val('');
-    $('#pass').val('');
-    $('#email1').val('');
-
+    clear_val()
     render()
     $('.add_user').removeClass('hide_button')
     $('.edit_user').removeClass('showe_button')
-  
-    console.log(i);
-    console.log(uaer_array);
+
+
 
 }

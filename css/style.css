@@ -42,6 +42,10 @@ section .input_arr .showe_button {
   display: block;
 }
 
+section .input_arr .valid {
+  background-color: #dd636394;
+}
+
 section .table {
   display: block;
   width: 600px;

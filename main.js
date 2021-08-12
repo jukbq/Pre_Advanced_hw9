@@ -1,4 +1,9 @@
 let uaer_array = [];
+function clear_val() {
+    $('#login').val('');
+    $('#pass').val('');
+    $('#email1').val('');
+}
 function render() {
     let table = '<tr>';
     $.each(uaer_array, function (key, data) {
@@ -51,12 +56,32 @@ function add_user() {
     let login = $('#login').val();
     let pass = $('#pass').val();
     let email1 = $('#email1').val();
-    let reg = new User(`${login}`, `${pass}`, `${email1}`);
-    reg.push_array();
-    $('#login').val('');
-    $('#pass').val('');
-    $('#email1').val('');
-    render();
+    if (login !== '' && pass !== '' && email1 !== '') {
+        if (login !== '') {
+            $('#login').removeClass('valid');
+        }
+        if (pass !== '') {
+            $('#pass').removeClass('valid');
+        }
+        if (email1 !== '') {
+            $('#email1').removeClass('valid');
+        }
+        let reg = new User(`${login}`, `${pass}`, `${email1}`);
+        reg.push_array();
+        clear_val();
+        render();
+    }
+    else {
+        if (login === '') {
+            $('#login').addClass('valid');
+        }
+        if (pass === '') {
+            $('#pass').addClass('valid');
+        }
+        if (email1 === '') {
+            $('#email1').addClass('valid');
+        }
+    }
 }
 function deleteUser(i) {
     $(".tab_body").empty();
@@ -87,12 +112,8 @@ function saveEditUser() {
     uaer_array.splice(i, 1);
     let reg = new User(`${login}`, `${pass}`, `${email1}`);
     reg.push_array_index(i);
-    $('#login').val('');
-    $('#pass').val('');
-    $('#email1').val('');
+    clear_val();
     render();
     $('.add_user').removeClass('hide_button');
     $('.edit_user').removeClass('showe_button');
-    console.log(i);
-    console.log(uaer_array);
 }
