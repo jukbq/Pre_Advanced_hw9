@@ -43,7 +43,7 @@ section .input_arr .showe_button {
 }
 
 section .input_arr .valid {
-  background-color: #dd636394;
+  border: 1px solid red;
 }
 
 section .table {

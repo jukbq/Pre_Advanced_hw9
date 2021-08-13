@@ -66,6 +66,7 @@ function add_user(): void {
     let email1 = $('#email1').val();
 
     if (login !== '' && pass !== '' && email1 !== '') {
+        
         if (login !== '') {
             $('#login').removeClass('valid');
         }
