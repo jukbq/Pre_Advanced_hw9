@@ -24,7 +24,8 @@ section {
             display: block;
         }
         .valid {
-            border: 1px solid red;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 10px #ff0000;
         }
     }
     .table {

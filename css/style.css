@@ -43,7 +43,9 @@ section .input_arr .showe_button {
 }
 
 section .input_arr .valid {
-  border: 1px solid red;
+  border: 1px solid #ff0000;
+  -webkit-box-shadow: 0 0 10px #ff0000;
+          box-shadow: 0 0 10px #ff0000;
 }
 
 section .table {

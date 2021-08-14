@@ -4,6 +4,32 @@ function clear_val() {
     $('#pass').val('');
     $('#email1').val('');
 }
+let loginRegExp = new RegExp(/^[a-zA-z0-9]{3,10}$/);
+let passwordRegExp = new RegExp(/^[a-zA-Z0-9_\-\.]{6,16}$/);
+let emailRegExp = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+let formEl = document.querySelectorAll('.form-control');
+for (let i = 0; i < formEl.length; i++) {
+    formEl[i].addEventListener('keyup', function valid(event) {
+        switch (this.type) {
+            case 'text': {
+                !loginRegExp.test(this.value) ?
+                    this.classList.add('valid') : this.classList.remove('valid');
+                break;
+            }
+            case 'password': {
+                !passwordRegExp.test(this.value) ?
+                    this.classList.add('valid') : this.classList.remove('valid');
+                break;
+            }
+            case 'email': {
+                !emailRegExp.test(this.value) ?
+                    this.classList.add('valid') : this.classList.remove('valid');
+                break;
+            }
+        }
+    });
+}
+;
 function render() {
     let table = '<tr>';
     $.each(uaer_array, function (key, data) {
@@ -56,16 +82,7 @@ function add_user() {
     let login = $('#login').val();
     let pass = $('#pass').val();
     let email1 = $('#email1').val();
-    if (login !== '' && pass !== '' && email1 !== '') {
-        if (login !== '') {
-            $('#login').removeClass('valid');
-        }
-        if (pass !== '') {
-            $('#pass').removeClass('valid');
-        }
-        if (email1 !== '') {
-            $('#email1').removeClass('valid');
-        }
+    if (login !== '' && loginRegExp.test(login) && pass !== '' && passwordRegExp.test(pass) && email1 !== '' && emailRegExp.test(email1)) {
         let reg = new User(`${login}`, `${pass}`, `${email1}`);
         reg.push_array();
         clear_val();
@@ -108,12 +125,14 @@ function saveEditUser() {
     let pass = $('#pass').val();
     let email1 = $('#email1').val();
     let i = userIndex;
-    $(".tab_body").empty();
-    uaer_array.splice(i, 1);
-    let reg = new User(`${login}`, `${pass}`, `${email1}`);
-    reg.push_array_index(i);
-    clear_val();
-    render();
-    $('.add_user').removeClass('hide_button');
-    $('.edit_user').removeClass('showe_button');
+    if (login !== '' && loginRegExp.test(login) && pass !== '' && passwordRegExp.test(pass) && email1 !== '' && emailRegExp.test(email1)) {
+        $(".tab_body").empty();
+        uaer_array.splice(i, 1);
+        let reg = new User(`${login}`, `${pass}`, `${email1}`);
+        reg.push_array_index(i);
+        clear_val();
+        render();
+        $('.add_user').removeClass('hide_button');
+        $('.edit_user').removeClass('showe_button');
+    }
 }
