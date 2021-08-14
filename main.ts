@@ -14,8 +14,6 @@ let emailRegExp = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
 let formEl = document.querySelectorAll('.form-control');
 
-
-
 for (let i = 0; i < formEl.length; i++) {
     formEl[i].addEventListener('keyup', function valid(event) {
         switch (this.type) {
@@ -35,13 +33,8 @@ for (let i = 0; i < formEl.length; i++) {
                     this.classList.add('valid') : this.classList.remove('valid');
                 break;
             }
-
         }
-
     });
-
-
-
 };
 /*------------------------------Заповнення таблиці-----------------------*/
 
@@ -64,7 +57,6 @@ function render(): void {
         table += '</tr>'
     });
     $('.tab_body').html(table);
-
 };
 
 /*----------------------------обєкт user--------------------------------*/
@@ -95,10 +87,6 @@ class User {
     }
 };
 
-
-
-
-
 /*--------------------------Кнопка add_user------------------------*/
 function add_user(): void {
     let login: any = $('#login').val();
@@ -121,12 +109,7 @@ function add_user(): void {
             $('#email1').addClass('valid');
         }
     }
-
-
-
 }
-
-
 
 /*--------------------------Кнопка delete------------------------*/
 
@@ -135,12 +118,9 @@ function deleteUser(i: any): void {
     let arr_index: any = i
     uaer_array.splice(i, 1)
     render()
-
-
 }
 
 /*--------------------------Кнорка Edit---------------------------*/
-
 let userIndex: any = ''
 function edit(i: any): void {
 
@@ -171,7 +151,5 @@ function saveEditUser(): void {
         render()
         $('.add_user').removeClass('hide_button')
         $('.edit_user').removeClass('showe_button')
-
     }
-
 }
